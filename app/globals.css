@@ -78,16 +78,3 @@ body {
   animation: lp-float 6s ease-in-out infinite;
 }
 
-.lp-gradient-bg {
-  background: radial-gradient(
-      ellipse 80% 60% at 50% 0%,
-      var(--lp-glow) 0%,
-      transparent 55%
-    ),
-    radial-gradient(
-      ellipse 60% 50% at 100% 80%,
-      var(--lp-blue-glow) 0%,
-      transparent 50%
-    ),
-    var(--lp-bg);
-}
