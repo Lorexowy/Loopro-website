@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Roboto_Flex } from "next/font/google";
 import "./globals.css";
 
@@ -24,6 +24,13 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#000000",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -34,7 +41,9 @@ export default function RootLayout({
       lang="en"
       className={`dark ${inter.variable} ${robotoFlex.variable} h-full`}
     >
-      <body className="min-h-dvh antialiased">{children}</body>
+      <body className="min-h-[100svh] min-h-dvh overflow-x-hidden antialiased">
+        {children}
+      </body>
     </html>
   );
 }
