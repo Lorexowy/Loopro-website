@@ -4,14 +4,14 @@ export function Footer() {
       <div className="flex w-full flex-wrap items-center justify-center gap-x-4 gap-y-2 text-center text-[11px] text-[var(--lp-fg-muted)] sm:gap-x-6 sm:text-[12px]">
         <a
           id="privacy"
-          href="#privacy"
+          href="/privacy"
           className="scroll-mt-24 transition-colors hover:text-[var(--lp-fg)]"
         >
           Privacy Policy
         </a>
         <a
           id="terms"
-          href="#terms"
+          href="/terms"
           className="scroll-mt-24 transition-colors hover:text-[var(--lp-fg)]"
         >
           Terms of Service

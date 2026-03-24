@@ -10,8 +10,8 @@ const linkLeft = [
 ] as const;
 
 const linkRight = [
-  { href: "#privacy", label: "Privacy" },
-  { href: "#terms", label: "Terms" },
+  { href: "/privacy", label: "Privacy" },
+  { href: "/terms", label: "Terms" },
   { href: "#contact", label: "Contact" },
 ] as const;
 
