@@ -257,7 +257,7 @@ function PricingSection() {
         </div>
       </div>
 
-      <div className="mx-auto mt-16 grid max-w-lg grid-cols-2 items-stretch gap-4 sm:gap-6 lg:max-w-4xl lg:gap-x-8">
+      <div className="mx-auto mt-16 grid max-w-lg grid-cols-1 items-stretch gap-4 sm:grid-cols-2 sm:gap-6 lg:max-w-4xl lg:gap-x-8">
         <PricingCardShell>
           <h3 className="text-base font-semibold tracking-tight text-[var(--lp-fg)] sm:text-lg">
             {freeTier.name}
