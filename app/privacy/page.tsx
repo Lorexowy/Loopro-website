@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { SiteHeader } from "../components/SiteHeader";
 
 const navLeft = [
   { href: "/#download", label: "Download" },
@@ -17,9 +18,10 @@ const linkClass =
 
 export default function PrivacyPage() {
   return (
-    <main className="min-h-[100svh] bg-black px-4 py-10 text-[var(--lp-fg)] sm:px-6">
+    <main className="min-h-[100svh] bg-black px-4 pb-10 pt-[7rem] text-[var(--lp-fg)] sm:px-6 sm:pt-[8rem]">
+      <SiteHeader />
       <div className="mx-auto w-full max-w-3xl">
-        <header className="pt-1 pb-4 sm:pb-6">
+        <header className="hidden">
           <div className="relative overflow-hidden rounded-xl border border-white/12 bg-white/[0.03] px-3 py-2 shadow-[0_8px_24px_-16px_rgba(0,0,0,0.55),0_1px_0_rgba(255,255,255,0.04)_inset] backdrop-blur-[1px] backdrop-saturate-125 sm:px-4 sm:py-3">
             <div
               aria-hidden

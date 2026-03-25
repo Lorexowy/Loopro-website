@@ -1,6 +1,6 @@
 import { Footer } from "./Footer";
 import Grainient from "./Grainient";
-import { Header } from "./Header";
+import { SiteHeader } from "./SiteHeader";
 import { Hero } from "./Hero";
 
 /** Jedna kolumna treści — ta sama szerokość i padding dla nav, hero, gridu i stopki */
@@ -29,14 +29,14 @@ export function Landing() {
           zoom={0.9}
         />
       </div>
+      <SiteHeader />
       <div
         aria-hidden
         className="pointer-events-none fixed inset-0 -z-1 sm:hidden bg-[linear-gradient(to_bottom,rgba(0,0,0,0.98)_0%,rgba(0,0,0,0.82)_8%,rgba(0,0,0,0.35)_20%,rgba(0,0,0,0.08)_36%,rgba(0,0,0,0.08)_64%,rgba(0,0,0,0.34)_80%,rgba(0,0,0,0.82)_92%,rgba(0,0,0,0.98)_100%)]"
       />
       <div
-        className={`${pageShell} relative z-10 flex flex-1 flex-col pt-[max(1rem,env(safe-area-inset-top))] pb-[max(1rem,env(safe-area-inset-bottom))]`}
+        className={`${pageShell} relative z-10 flex flex-1 flex-col pt-[calc(7rem+env(safe-area-inset-top))] pb-[max(1rem,env(safe-area-inset-bottom))] sm:pt-[calc(8rem+env(safe-area-inset-top))]`}
       >
-        <Header />
         <main className="flex flex-1 flex-col">
           <Hero />
           <section id="features" className="sr-only" aria-hidden>

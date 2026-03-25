@@ -12,7 +12,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText as GSAPSplitText } from "gsap/SplitText";
 import Image from "next/image";
 import Link from "next/link";
-import { Header } from "../components/Header";
+import { SiteHeader } from "../components/SiteHeader";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, GSAPSplitText);
 
@@ -415,11 +415,7 @@ export function FeaturesExperience() {
 
   return (
     <div ref={scope} className="relative z-10 mx-auto w-full max-w-6xl">
-      <div className="pointer-events-none fixed inset-x-0 top-0 z-30 px-4 sm:px-6">
-        <div className="pointer-events-auto mx-auto w-full max-w-3xl">
-          <Header />
-        </div>
-      </div>
+      <SiteHeader />
 
       <div className="pointer-events-none fixed inset-x-0 top-[6.25rem] z-20 px-4 sm:top-[7.35rem] sm:px-6">
         <nav
