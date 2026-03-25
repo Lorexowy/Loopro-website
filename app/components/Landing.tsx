@@ -1,3 +1,4 @@
+import { BackgroundVignette } from "./BackgroundVignette";
 import { Footer } from "./Footer";
 import Grainient from "./Grainient";
 import { SiteHeader } from "./SiteHeader";
@@ -34,6 +35,7 @@ export function Landing() {
         aria-hidden
         className="pointer-events-none fixed inset-0 -z-1 sm:hidden bg-[linear-gradient(to_bottom,rgba(0,0,0,0.98)_0%,rgba(0,0,0,0.82)_8%,rgba(0,0,0,0.35)_20%,rgba(0,0,0,0.08)_36%,rgba(0,0,0,0.08)_64%,rgba(0,0,0,0.34)_80%,rgba(0,0,0,0.82)_92%,rgba(0,0,0,0.98)_100%)]"
       />
+      <BackgroundVignette />
       <div
         className={`${pageShell} relative z-10 flex flex-1 flex-col pt-[calc(7rem+env(safe-area-inset-top))] pb-[max(1rem,env(safe-area-inset-bottom))] sm:pt-[calc(8rem+env(safe-area-inset-top))]`}
       >

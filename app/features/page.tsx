@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BackgroundVignette } from "../components/BackgroundVignette";
 import Grainient from "../components/Grainient";
 import { FeaturesExperience } from "./FeaturesExperience";
 
@@ -42,6 +43,7 @@ export default function FeaturesPage() {
         aria-hidden
         className="pointer-events-none fixed inset-0 -z-1 sm:hidden bg-[linear-gradient(to_bottom,rgba(0,0,0,0.98)_0%,rgba(0,0,0,0.82)_8%,rgba(0,0,0,0.35)_20%,rgba(0,0,0,0.08)_36%,rgba(0,0,0,0.08)_64%,rgba(0,0,0,0.34)_80%,rgba(0,0,0,0.82)_92%,rgba(0,0,0,0.98)_100%)]"
       />
+      <BackgroundVignette />
       <FeaturesExperience />
     </main>
   );

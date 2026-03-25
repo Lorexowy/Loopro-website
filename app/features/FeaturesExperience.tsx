@@ -440,7 +440,7 @@ export function FeaturesExperience() {
         scrollTrigger: {
           trigger: ".feature-row--first",
           start: "center center",
-          end: "+=220%",
+          end: "+=300%",
           scrub: 1,
           pin: true,
           anticipatePin: 1,
@@ -459,6 +459,7 @@ export function FeaturesExperience() {
           },
           0.02,
         )
+        .to({}, { duration: 0.55 }, 0.62)
         .to(
           ".feature1-pretitle-char",
           {
@@ -468,17 +469,17 @@ export function FeaturesExperience() {
             stagger: 0.028,
             ease: "none",
           },
-          0.56,
+          1.12,
         )
         .to(
           ".feature1-overlay",
           { autoAlpha: 0, duration: 0.12, ease: "none" },
-          0.96,
+          1.52,
         )
         .to(
           ".feature1-base-copy, .feature1-base-media",
           { y: 0, autoAlpha: 1, duration: 0.34, ease: "none" },
-          1.02,
+          1.58,
         )
         .to(
           ".feature1-char-sub",
@@ -489,7 +490,7 @@ export function FeaturesExperience() {
             stagger: 0.018,
             ease: "none",
           },
-          1.42,
+          1.98,
         )
         .to(
           ".feature1-char-loan",
@@ -500,17 +501,17 @@ export function FeaturesExperience() {
             stagger: 0.024,
             ease: "none",
           },
-          1.54,
+          2.1,
         )
         .to(
           ".feature1-phone-current",
           { xPercent: 165, autoAlpha: 0, duration: 0.52, ease: "none" },
-          1.52,
+          2.08,
         )
         .to(
           ".feature1-phone-next",
           { xPercent: 0, autoAlpha: 1, duration: 0.5, ease: "none" },
-          1.94,
+          2.5,
         )
         .to({}, { duration: 0.42 });
 
