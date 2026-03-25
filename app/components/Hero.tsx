@@ -35,10 +35,29 @@ export function Hero() {
             className="h-[40px] w-auto sm:h-[44px] md:h-[46px]"
           />
         </a>
-
+      </div>
+      <div className="lp-animate-in lp-delay-3 mt-8 flex w-full justify-center">
+        <Image
+          src="/iphone_main_phone_view.png"
+          alt="Loopro app preview on iPhone"
+          width={682}
+          height={1200}
+          priority
+          className="h-auto w-[min(62vw,210px)] sm:hidden"
+        />
+        <Image
+          src="/iphone_main.png"
+          alt="Loopro app preview on iPhone"
+          width={682}
+          height={1200}
+          priority
+          className="hidden h-auto sm:block sm:w-[320px] md:w-[360px]"
+        />
+      </div>
+      <div className="lp-animate-in lp-delay-3 mt-3 flex w-full justify-center">
         <a
           href="#features"
-          className="mt-3 text-[13px] font-normal text-[var(--lp-fg-muted)] transition-colors hover:text-[var(--lp-fg)]"
+          className="text-[13px] font-normal text-[var(--lp-fg-muted)] transition-colors hover:text-[var(--lp-fg)]"
         >
           learn more
         </a>

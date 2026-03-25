@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const navLeft = [
   { href: "/#download", label: "Download" },
-  { href: "/#features", label: "Features" },
+  { href: "/features", label: "Features" },
 ] as const;
 
 const navRight = [
