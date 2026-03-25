@@ -78,6 +78,14 @@ type FeatureSectionProps = {
   feature: FeatureSectionModel;
 };
 
+function renderAnimatedWordChars(word: string, className: string) {
+  return word.split("").map((char, index) => (
+    <span key={`${className}-${index}`} className={`${className} inline-block`}>
+      {char === " " ? "\u00A0" : char}
+    </span>
+  ));
+}
+
 const freeTier = {
   name: "Free",
   features: [
@@ -100,34 +108,93 @@ const paidFeatures = [
 function FeatureSection({ feature }: FeatureSectionProps) {
   return (
     <section
-      className={`feature-row min-h-[100svh] min-h-dvh grid items-center gap-10 py-9 md:grid-cols-2 md:gap-16 md:py-14 ${
+      className={`feature-row ${feature.id === "feature-1" ? "feature-row--first relative" : ""} min-h-[100svh] min-h-dvh grid items-center gap-10 py-9 md:grid-cols-2 md:gap-16 md:py-14 ${
         feature.reverse
           ? "md:[&>div:first-child]:order-2 md:[&>div:last-child]:order-1"
           : ""
       }`}
     >
+      {feature.id === "feature-1" ? (
+        <div
+          aria-hidden
+          className="feature1-overlay pointer-events-none absolute inset-0 z-20 flex items-center justify-center"
+        >
+          <p className="text-center text-[clamp(3.2rem,16vw,9rem)] font-black uppercase leading-[0.85] tracking-tight text-[var(--lp-fg)]">
+            {renderAnimatedWordChars("OVERVIEW", "feature1-pretitle-char")}
+          </p>
+        </div>
+      ) : null}
       <div
-        className={`${
+        className={`feature-copy ${
           feature.reverse
             ? "md:mr-auto md:max-w-xl"
             : "md:ml-auto md:max-w-xl"
-        } mx-auto text-center md:text-left`}
+        } mx-auto ${
+          feature.id === "feature-1" ? "feature1-base-copy text-left" : "text-center"
+        } md:text-left`}
       >
-        <h2 className="text-balance text-3xl font-semibold tracking-tight text-[var(--lp-fg)] sm:text-4xl">
-          {feature.title}
-        </h2>
-        <p className="mt-4 max-w-2xl text-pretty text-[15px] leading-relaxed text-[var(--lp-fg-muted)] sm:text-base">
-          {feature.description}
-        </p>
+        {feature.id === "feature-1" ? (
+          <h2 className="text-balance text-3xl font-semibold tracking-tight text-[var(--lp-fg)] sm:text-4xl">
+            Overview of your{" "}
+            <span className="relative inline-grid align-baseline">
+              <span aria-hidden className="invisible [grid-area:1/1]">
+                subscriptions
+              </span>
+              <span className="feature1-word-subscriptions absolute inset-0 whitespace-nowrap">
+                {renderAnimatedWordChars("subscriptions", "feature1-char-sub")}
+              </span>
+              <span className="feature1-word-loans absolute inset-0 whitespace-nowrap">
+                {renderAnimatedWordChars("loans", "feature1-char-loan")}
+              </span>
+            </span>
+          </h2>
+        ) : (
+          <>
+            <h2 className="text-balance text-3xl font-semibold tracking-tight text-[var(--lp-fg)] sm:text-4xl">
+              {feature.title}
+            </h2>
+            <p className="mt-4 max-w-2xl text-pretty text-[15px] leading-relaxed text-[var(--lp-fg-muted)] sm:text-base">
+              {feature.description}
+            </p>
+          </>
+        )}
+        {feature.id === "feature-1" ? (
+          <p className="mt-4 max-w-2xl text-pretty text-[15px] leading-relaxed text-[var(--lp-fg-muted)] sm:text-base">
+            {feature.description}
+          </p>
+        ) : null}
       </div>
-      <div className="flex w-full justify-center">
-        <Image
-          src={feature.imageSrc}
-          alt={`${feature.title} in Loopro app`}
-          width={682}
-          height={1200}
-          className="h-auto w-[min(72vw,280px)] sm:w-[320px]"
-        />
+      <div
+        className={`feature-media flex w-full justify-center ${
+          feature.id === "feature-1" ? "feature1-base-media" : ""
+        }`}
+      >
+        {feature.id === "feature-1" ? (
+          <div className="feature1-phone-stage relative w-[min(78vw,320px)] sm:w-[360px] aspect-[682/1200]">
+            <Image
+              src={feature.imageSrc}
+              alt={`${feature.title} in Loopro app`}
+              fill
+              sizes="(min-width: 640px) 360px, min(78vw,320px)"
+              className="feature1-phone-current object-contain"
+            />
+            <Image
+              src="/iphone_main_phone_view.png"
+              alt="Loopro app loans preview"
+              fill
+              sizes="(min-width: 640px) 360px, min(78vw,320px)"
+              className="feature1-phone-next object-contain"
+            />
+          </div>
+        ) : (
+          <Image
+            src={feature.imageSrc}
+            alt={`${feature.title} in Loopro app`}
+            width={682}
+            height={1200}
+            className="feature-phone h-auto w-[min(72vw,280px)] sm:w-[320px]"
+          />
+        )}
       </div>
     </section>
   );
@@ -345,21 +412,107 @@ export function FeaturesExperience() {
         ease: "sine.inOut",
       });
 
-      gsap.set(".feature-row", { autoAlpha: 0, y: 72 });
+      gsap.set(".feature-row:not(.feature-row--first)", { autoAlpha: 0, y: 72 });
+      gsap.set(".feature-row--first", { autoAlpha: 1, y: 0 });
+      gsap.set(".feature1-pretitle-char", { autoAlpha: 0, y: 26 });
+      gsap.set(".feature1-base-copy, .feature1-base-media", { autoAlpha: 0, y: 18 });
+      gsap.set(".feature1-char-sub", { autoAlpha: 1, y: 0 });
+      gsap.set(".feature1-char-loan", { autoAlpha: 0, y: 16 });
+      gsap.set(".feature1-phone-next", { autoAlpha: 0, xPercent: 130 });
 
-      gsap.utils.toArray<HTMLElement>(".feature-row").forEach((section) => {
-        gsap.to(section, {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.95,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: section,
-            start: "top 84%",
-            toggleActions: "play none none reverse",
-          },
+      gsap.utils
+        .toArray<HTMLElement>(".feature-row:not(.feature-row--first)")
+        .forEach((section) => {
+          gsap.to(section, {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.95,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: section,
+              start: "top 84%",
+              toggleActions: "play none none reverse",
+            },
+          });
         });
+
+      const feature1Tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".feature-row--first",
+          start: "center center",
+          end: "+=220%",
+          scrub: 1,
+          pin: true,
+          anticipatePin: 1,
+        },
       });
+
+      feature1Tl
+        .to(
+          ".feature1-pretitle-char",
+          {
+            y: 0,
+            autoAlpha: 1,
+            duration: 0.28,
+            stagger: 0.045,
+            ease: "none",
+          },
+          0.02,
+        )
+        .to(
+          ".feature1-pretitle-char",
+          {
+            y: -20,
+            autoAlpha: 0,
+            duration: 0.24,
+            stagger: 0.028,
+            ease: "none",
+          },
+          0.56,
+        )
+        .to(
+          ".feature1-overlay",
+          { autoAlpha: 0, duration: 0.12, ease: "none" },
+          0.96,
+        )
+        .to(
+          ".feature1-base-copy, .feature1-base-media",
+          { y: 0, autoAlpha: 1, duration: 0.34, ease: "none" },
+          1.02,
+        )
+        .to(
+          ".feature1-char-sub",
+          {
+            y: -16,
+            autoAlpha: 0,
+            duration: 0.22,
+            stagger: 0.018,
+            ease: "none",
+          },
+          1.42,
+        )
+        .to(
+          ".feature1-char-loan",
+          {
+            y: 0,
+            autoAlpha: 1,
+            duration: 0.24,
+            stagger: 0.024,
+            ease: "none",
+          },
+          1.54,
+        )
+        .to(
+          ".feature1-phone-current",
+          { xPercent: 165, autoAlpha: 0, duration: 0.52, ease: "none" },
+          1.52,
+        )
+        .to(
+          ".feature1-phone-next",
+          { xPercent: 0, autoAlpha: 1, duration: 0.5, ease: "none" },
+          1.94,
+        )
+        .to({}, { duration: 0.42 });
 
       gsap.set(".pricing-heading, .pricing-sub", { autoAlpha: 0, y: 28 });
       gsap.set(".pricing-billing", { autoAlpha: 0, y: 20 });
@@ -388,6 +541,7 @@ export function FeaturesExperience() {
           },
           0.16,
         );
+
     },
     { scope },
   );
