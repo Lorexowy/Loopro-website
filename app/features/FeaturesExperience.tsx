@@ -13,6 +13,7 @@ import { SplitText as GSAPSplitText } from "gsap/SplitText";
 import Image from "next/image";
 import Link from "next/link";
 import { SiteHeader } from "../components/SiteHeader";
+import { featureSections, type FeatureSectionModel } from "./featuresData";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, GSAPSplitText);
 
@@ -73,28 +74,8 @@ function AnimatedSplitText({
   );
 }
 
-const features = [
-  {
-    title: "Overview of your subscriptions",
-    description:
-      "See all active subscriptions in one clean list. Instantly check your services, renewal dates, and monthly totals without jumping between apps.",
-  },
-  {
-    title: "Get insights of your spendings",
-    description:
-      "Understand recurring costs with clear spending insights. Spot expensive services, compare categories, and make smarter monthly budget decisions.",
-  },
-  {
-    title: "Calendar view for upcoming payments",
-    description:
-      "Know exactly when each payment is due. Plan ahead with a clear calendar timeline and avoid surprise subscription charges.",
-  },
-] as const;
-
 type FeatureSectionProps = {
-  title: string;
-  description: string;
-  reverse?: boolean;
+  feature: FeatureSectionModel;
 };
 
 const freeTier = {
@@ -116,35 +97,33 @@ const paidFeatures = [
   "iCloud sync",
 ] as const;
 
-function FeatureSection({
-  title,
-  description,
-  reverse,
-}: FeatureSectionProps) {
+function FeatureSection({ feature }: FeatureSectionProps) {
   return (
     <section
-      className={`feature-row grid items-center gap-10 py-9 md:grid-cols-2 md:gap-16 md:py-14 ${
-        reverse
+      className={`feature-row min-h-[100svh] min-h-dvh grid items-center gap-10 py-9 md:grid-cols-2 md:gap-16 md:py-14 ${
+        feature.reverse
           ? "md:[&>div:first-child]:order-2 md:[&>div:last-child]:order-1"
           : ""
       }`}
     >
       <div
         className={`${
-          reverse ? "md:mr-auto md:max-w-xl" : "md:ml-auto md:max-w-xl"
+          feature.reverse
+            ? "md:mr-auto md:max-w-xl"
+            : "md:ml-auto md:max-w-xl"
         } mx-auto text-center md:text-left`}
       >
         <h2 className="text-balance text-3xl font-semibold tracking-tight text-[var(--lp-fg)] sm:text-4xl">
-          {title}
+          {feature.title}
         </h2>
         <p className="mt-4 max-w-2xl text-pretty text-[15px] leading-relaxed text-[var(--lp-fg-muted)] sm:text-base">
-          {description}
+          {feature.description}
         </p>
       </div>
       <div className="flex w-full justify-center">
         <Image
-          src="/iphone_main_phone_view.png"
-          alt={`${title} in Loopro app`}
+          src={feature.imageSrc}
+          alt={`${feature.title} in Loopro app`}
           width={682}
           height={1200}
           className="h-auto w-[min(72vw,280px)] sm:w-[320px]"
@@ -468,19 +447,9 @@ export function FeaturesExperience() {
       </section>
 
       <section className="mx-auto mt-1 w-full max-w-6xl pb-8 sm:pb-12">
-        <FeatureSection
-          title={features[0].title}
-          description={features[0].description}
-        />
-        <FeatureSection
-          title={features[1].title}
-          description={features[1].description}
-          reverse
-        />
-        <FeatureSection
-          title={features[2].title}
-          description={features[2].description}
-        />
+        {featureSections.map((feature) => (
+          <FeatureSection key={feature.id} feature={feature} />
+        ))}
         <PricingSection />
       </section>
     </div>
