@@ -108,7 +108,7 @@ const paidFeatures = [
 function FeatureSection({ feature }: FeatureSectionProps) {
   return (
     <section
-      className={`feature-row ${feature.id === "feature-1" ? "feature-row--first relative" : ""} min-h-[100svh] min-h-dvh grid items-center gap-10 py-9 md:grid-cols-2 md:gap-16 md:py-14 ${
+      className={`feature-row ${feature.id === "feature-1" ? "feature-row--first relative" : ""} min-h-[100svh] min-h-dvh grid items-start gap-10 pt-[6.75rem] pb-9 sm:items-center sm:pt-9 sm:pb-9 md:grid-cols-2 md:gap-16 md:py-14 ${
         feature.reverse
           ? "md:[&>div:first-child]:order-2 md:[&>div:last-child]:order-1"
           : ""
@@ -117,7 +117,7 @@ function FeatureSection({ feature }: FeatureSectionProps) {
       {feature.id === "feature-1" ? (
         <div
           aria-hidden
-          className="feature1-overlay pointer-events-none absolute inset-0 z-20 flex items-center justify-center"
+          className="feature1-overlay pointer-events-none absolute bottom-0 left-0 right-0 top-[6.75rem] z-20 flex items-center justify-center sm:top-0"
         >
           <p className="text-center text-[clamp(3.2rem,16vw,9rem)] font-black uppercase leading-[0.85] tracking-tight text-[var(--lp-fg)]">
             {renderAnimatedWordChars("OVERVIEW", "feature1-pretitle-char")}
@@ -170,19 +170,19 @@ function FeatureSection({ feature }: FeatureSectionProps) {
         }`}
       >
         {feature.id === "feature-1" ? (
-          <div className="feature1-phone-stage relative w-[min(78vw,320px)] sm:w-[360px] aspect-[682/1200]">
+          <div className="feature1-phone-stage relative w-[min(62vw,240px)] sm:w-[360px] aspect-[682/1200]">
             <Image
               src={feature.imageSrc}
               alt={`${feature.title} in Loopro app`}
               fill
-              sizes="(min-width: 640px) 360px, min(78vw,320px)"
+              sizes="(min-width: 640px) 360px, min(62vw,240px)"
               className="feature1-phone-current object-contain"
             />
             <Image
               src="/iphone_main_phone_view.png"
               alt="Loopro app loans preview"
               fill
-              sizes="(min-width: 640px) 360px, min(78vw,320px)"
+              sizes="(min-width: 640px) 360px, min(62vw,240px)"
               className="feature1-phone-next object-contain"
             />
           </div>
@@ -192,7 +192,7 @@ function FeatureSection({ feature }: FeatureSectionProps) {
             alt={`${feature.title} in Loopro app`}
             width={682}
             height={1200}
-            className="feature-phone h-auto w-[min(72vw,280px)] sm:w-[320px]"
+            className="feature-phone h-auto w-[min(62vw,240px)] sm:w-[320px]"
           />
         )}
       </div>
