@@ -23,10 +23,13 @@ export function Header() {
   const mobileLinks = [...linkLeft, ...linkRight];
 
   const toggleMenu = () => setMenuOpen((v) => !v);
+  const headerChromeClass = menuOpen
+    ? "bg-white/[0.08] backdrop-blur-[16px] backdrop-saturate-175"
+    : "bg-white/[0.03] backdrop-blur-[2px] backdrop-saturate-135";
 
   return (
     <header className="lp-animate-in lp-delay-1 shrink-0 pt-4 pb-2 sm:pt-8 sm:pb-4">
-      <div className="relative overflow-hidden rounded-xl border border-white/12 bg-white/[0.03] px-3 py-2 shadow-[0_8px_24px_-16px_rgba(0,0,0,0.55),0_1px_0_rgba(255,255,255,0.04)_inset] backdrop-blur-[1px] backdrop-saturate-125 sm:px-4 sm:py-3">
+      <div className={`relative overflow-hidden rounded-xl border border-white/12 px-3 py-2 shadow-[0_8px_24px_-16px_rgba(0,0,0,0.55),0_1px_0_rgba(255,255,255,0.04)_inset] sm:px-4 sm:py-3 ${headerChromeClass}`}>
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_70%_at_50%_0%,rgba(255,255,255,0.045)_0%,rgba(255,255,255,0)_64%)]"
@@ -77,7 +80,7 @@ export function Header() {
 
         <div
           id="mobile-menu"
-          className={`overflow-hidden transition-[max-height,opacity,margin] duration-300 ease-out sm:hidden ${menuOpen ? "mt-3 max-h-80 opacity-100" : "mt-0 max-h-0 opacity-0 pointer-events-none"}`}
+          className={`relative z-10 overflow-hidden transition-[max-height,opacity,margin] duration-300 ease-out sm:hidden ${menuOpen ? "mt-3 max-h-80 opacity-100" : "mt-0 max-h-0 opacity-0 pointer-events-none"}`}
         >
           <nav aria-label="Mobile">
             <div className="flex flex-col gap-1 pb-1">
