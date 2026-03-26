@@ -108,7 +108,7 @@ const paidFeatures = [
 function FeatureSection({ feature }: FeatureSectionProps) {
   return (
     <section
-      className={`feature-row ${feature.id === "feature-1" ? "feature-row--first relative" : ""} min-h-[100svh] min-h-dvh grid items-start gap-10 pt-[6.25rem] pb-9 sm:items-center sm:pt-9 sm:pb-9 md:grid-cols-2 md:gap-16 md:py-14 ${
+      className={`feature-row ${feature.id === "feature-1" ? "feature-row--first relative" : ""} min-h-[100svh] min-h-dvh grid items-start gap-10 pt-[5rem] pb-9 sm:items-center sm:pt-9 sm:pb-9 md:grid-cols-2 md:gap-16 md:py-14 ${
         feature.reverse
           ? "md:[&>div:first-child]:order-2 md:[&>div:last-child]:order-1"
           : ""
@@ -117,7 +117,7 @@ function FeatureSection({ feature }: FeatureSectionProps) {
       {feature.id === "feature-1" ? (
         <div
           aria-hidden
-          className="feature1-overlay pointer-events-none absolute bottom-0 left-0 right-0 top-[6.25rem] z-20 flex items-center justify-center sm:top-0"
+          className="feature1-overlay pointer-events-none absolute bottom-0 left-0 right-0 top-[5rem] z-20 flex items-center justify-center sm:top-0"
         >
           <p className="text-center text-[clamp(3.2rem,16vw,9rem)] font-black uppercase leading-[0.85] tracking-tight text-[var(--lp-fg)]">
             {renderAnimatedWordChars("OVERVIEW", "feature1-pretitle-char")}
