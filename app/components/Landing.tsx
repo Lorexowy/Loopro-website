@@ -37,7 +37,7 @@ export function Landing() {
       />
       <BackgroundVignette />
       <div
-        className={`${pageShell} relative z-10 flex flex-1 flex-col pt-[calc(7rem+env(safe-area-inset-top))] pb-[max(1rem,env(safe-area-inset-bottom))] sm:pt-[calc(8rem+env(safe-area-inset-top))]`}
+        className={`${pageShell} relative z-10 flex flex-1 flex-col pt-[calc(5.5rem+env(safe-area-inset-top))] pb-[max(1rem,env(safe-area-inset-bottom))] sm:pt-[calc(6.5rem+env(safe-area-inset-top))]`}
       >
         <main className="flex flex-1 flex-col">
           <Hero />

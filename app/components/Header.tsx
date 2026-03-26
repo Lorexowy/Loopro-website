@@ -24,19 +24,17 @@ export function Header() {
 
   const toggleMenu = () => setMenuOpen((v) => !v);
   const headerChromeClass = menuOpen
-    ? "bg-white/[0.08] backdrop-blur-[16px] backdrop-saturate-175"
-    : "bg-white/[0.03] backdrop-blur-[2px] backdrop-saturate-135";
+    ? "bg-black/[0.55] backdrop-blur-[20px] backdrop-saturate-200"
+    : "bg-black/[0.45] backdrop-blur-[10px] backdrop-saturate-160";
 
   return (
-    <header className="lp-animate-in lp-delay-1 shrink-0 pt-4 pb-2 sm:pt-8 sm:pb-4">
-      <div className={`relative overflow-hidden rounded-xl border border-white/12 px-3 py-2 shadow-[0_8px_24px_-16px_rgba(0,0,0,0.55),0_1px_0_rgba(255,255,255,0.04)_inset] sm:px-4 sm:py-3 ${headerChromeClass}`}>
+    <header className="lp-animate-in lp-delay-1 shrink-0">
+      <div
+        className={`relative w-full px-3 py-2 sm:px-4 sm:py-3 ${headerChromeClass}`}
+      >
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_70%_at_50%_0%,rgba(255,255,255,0.045)_0%,rgba(255,255,255,0)_64%)]"
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-[1px] rounded-[11px] border border-white/[0.045]"
         />
         <div className="relative z-10">
         <div className="flex items-center justify-between sm:hidden">

@@ -551,7 +551,7 @@ export function FeaturesExperience() {
     <div ref={scope} className="relative z-10 mx-auto w-full max-w-6xl">
       <SiteHeader />
 
-      <div className="pointer-events-none fixed inset-x-0 top-[6.25rem] z-20 px-4 sm:top-[7.35rem] sm:px-6">
+      <div className="pointer-events-none fixed inset-x-0 top-[5.5rem] z-20 px-4 sm:top-[6.5rem] sm:px-6">
         <nav
           aria-label="Breadcrumb"
           className="hero-breadcrumbs pointer-events-auto mx-auto flex w-fit items-center justify-center gap-2 text-[12px] tracking-tight text-white/75"
@@ -564,7 +564,7 @@ export function FeaturesExperience() {
         </nav>
       </div>
 
-      <section className="hero-stage mx-auto flex min-h-[100svh] w-full max-w-3xl flex-col pt-[7rem] sm:pt-[8rem]">
+      <section className="hero-stage mx-auto flex min-h-[100svh] w-full max-w-3xl flex-col pt-[5.5rem] sm:pt-[6.5rem]">
         <div className="flex flex-1 items-start justify-center pt-10 sm:pt-12">
           <header className="mx-auto max-w-3xl px-1 text-center">
             <div className="intro-icon mx-auto mb-6 flex w-full justify-center">
