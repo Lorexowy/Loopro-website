@@ -108,7 +108,15 @@ const paidFeatures = [
 function FeatureSection({ feature }: FeatureSectionProps) {
   return (
     <section
-      className={`feature-row ${feature.id === "feature-1" ? "feature-row--first relative" : ""} min-h-[100svh] min-h-dvh grid items-start gap-10 pt-[5rem] pb-9 sm:items-center sm:pt-9 sm:pb-9 md:grid-cols-2 md:gap-16 md:py-14 ${
+      className={`feature-row ${
+        feature.id === "feature-1"
+          ? "feature-row--first relative"
+          : feature.id === "feature-2"
+            ? "feature-row--second relative"
+            : feature.id === "feature-3"
+              ? "feature-row--third relative"
+              : ""
+      } min-h-[100svh] min-h-dvh grid items-start gap-10 pt-[5rem] pb-9 sm:items-center sm:pt-9 sm:pb-9 md:grid-cols-2 md:gap-16 md:py-14 ${
         feature.reverse
           ? "md:[&>div:first-child]:order-2 md:[&>div:last-child]:order-1"
           : ""
@@ -124,13 +132,39 @@ function FeatureSection({ feature }: FeatureSectionProps) {
           </p>
         </div>
       ) : null}
+      {feature.id === "feature-2" ? (
+        <div
+          aria-hidden
+          className="feature2-overlay pointer-events-none absolute inset-0 z-20 grid place-items-center"
+        >
+          <p className="text-center text-[clamp(3.2rem,16vw,9rem)] font-black uppercase leading-[0.85] tracking-tight text-[var(--lp-fg)]">
+            {renderAnimatedWordChars("INSIGHTS", "feature2-pretitle-char")}
+          </p>
+        </div>
+      ) : null}
+      {feature.id === "feature-3" ? (
+        <div
+          aria-hidden
+          className="feature3-overlay pointer-events-none absolute inset-0 z-20 grid place-items-center"
+        >
+          <p className="text-center text-[clamp(3.2rem,16vw,9rem)] font-black uppercase leading-[0.85] tracking-tight text-[var(--lp-fg)]">
+            {renderAnimatedWordChars("CALENDAR", "feature3-pretitle-char")}
+          </p>
+        </div>
+      ) : null}
       <div
         className={`feature-copy ${
           feature.reverse
             ? "md:mr-auto md:max-w-xl"
             : "md:ml-auto md:max-w-xl"
         } mx-auto ${
-          feature.id === "feature-1" ? "feature1-base-copy text-left" : "text-center"
+          feature.id === "feature-1"
+            ? "feature1-base-copy text-left"
+            : feature.id === "feature-2"
+              ? "feature2-base-copy text-left"
+              : feature.id === "feature-3"
+                ? "feature3-base-copy text-left"
+                : "text-center"
         } md:text-left`}
       >
         {feature.id === "feature-1" ? (
@@ -155,6 +189,15 @@ function FeatureSection({ feature }: FeatureSectionProps) {
               </span>
             </span>
           </h2>
+        ) : feature.id === "feature-2" || feature.id === "feature-3" ? (
+          <>
+            <h2 className="text-balance text-3xl font-semibold tracking-tight text-[var(--lp-fg)] sm:text-4xl">
+              {feature.title}
+            </h2>
+            <p className="mt-4 max-w-2xl text-pretty text-[15px] leading-relaxed text-[var(--lp-fg-muted)] sm:text-base">
+              {feature.description}
+            </p>
+          </>
         ) : (
           <>
             <h2 className="text-balance text-3xl font-semibold tracking-tight text-[var(--lp-fg)] sm:text-4xl">
@@ -173,7 +216,13 @@ function FeatureSection({ feature }: FeatureSectionProps) {
       </div>
       <div
         className={`feature-media flex w-full justify-center ${
-          feature.id === "feature-1" ? "feature1-base-media" : ""
+          feature.id === "feature-1"
+            ? "feature1-base-media"
+            : feature.id === "feature-2"
+              ? "feature2-base-media"
+              : feature.id === "feature-3"
+                ? "feature3-base-media"
+                : ""
         }`}
       >
         {feature.id === "feature-1" ? (
@@ -191,6 +240,26 @@ function FeatureSection({ feature }: FeatureSectionProps) {
               fill
               sizes="(min-width: 640px) 360px, min(62vw,240px)"
               className="feature1-phone-next object-contain"
+            />
+          </div>
+        ) : feature.id === "feature-2" ? (
+          <div className="feature2-phone-stage relative w-[min(62vw,240px)] sm:w-[360px] aspect-[682/1200]">
+            <Image
+              src={feature.imageSrc}
+              alt={`${feature.title} in Loopro app`}
+              fill
+              sizes="(min-width: 640px) 360px, min(62vw,240px)"
+              className="object-contain"
+            />
+          </div>
+        ) : feature.id === "feature-3" ? (
+          <div className="feature3-phone-stage relative w-[min(62vw,240px)] sm:w-[360px] aspect-[682/1200]">
+            <Image
+              src={feature.imageSrc}
+              alt={`${feature.title} in Loopro app`}
+              fill
+              sizes="(min-width: 640px) 360px, min(62vw,240px)"
+              className="object-contain"
             />
           </div>
         ) : (
@@ -400,6 +469,16 @@ export function FeaturesExperience() {
         gsap.set(".feature1-char-loan", { autoAlpha: 0, y: 16 });
         gsap.set(".feature1-phone-current", { autoAlpha: 1, xPercent: 0 });
         gsap.set(".feature1-phone-next", { autoAlpha: 0, xPercent: 130 });
+        gsap.set(".feature2-overlay", { autoAlpha: 0 });
+        gsap.set(".feature2-base-copy, .feature2-base-media", {
+          autoAlpha: 1,
+          y: 0,
+        });
+        gsap.set(".feature3-overlay", { autoAlpha: 0 });
+        gsap.set(".feature3-base-copy, .feature3-base-media", {
+          autoAlpha: 1,
+          y: 0,
+        });
         gsap.set(".pricing-heading, .pricing-sub, .pricing-billing, .pricing-card", {
           autoAlpha: 1,
           y: 0,
@@ -452,30 +531,19 @@ export function FeaturesExperience() {
         ease: "sine.inOut",
       });
 
-      gsap.set(".feature-row:not(.feature-row--first)", { autoAlpha: 0, y: 72 });
-      gsap.set(".feature-row--first", { autoAlpha: 1, y: 0 });
+      gsap.set(".feature-row--first, .feature-row--second, .feature-row--third", {
+        autoAlpha: 1,
+        y: 0,
+      });
       gsap.set(".feature1-pretitle-char", { autoAlpha: 0, y: 26 });
       gsap.set(".feature1-base-copy, .feature1-base-media", { autoAlpha: 0, y: 18 });
       gsap.set(".feature1-char-sub", { autoAlpha: 1, y: 0 });
       gsap.set(".feature1-char-loan", { autoAlpha: 0, y: 16 });
       gsap.set(".feature1-phone-next", { autoAlpha: 0, xPercent: 130 });
-
-      gsap.utils
-        .toArray<HTMLElement>(".feature-row:not(.feature-row--first)")
-        .forEach((section) => {
-          gsap.to(section, {
-            autoAlpha: 1,
-            y: 0,
-            duration: 0.95,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: section,
-              start: "top 84%",
-              toggleActions: "play none none reverse",
-              invalidateOnRefresh: true,
-            },
-          });
-        });
+      gsap.set(".feature2-pretitle-char", { autoAlpha: 0, y: 26 });
+      gsap.set(".feature2-base-copy, .feature2-base-media", { autoAlpha: 0, y: 18 });
+      gsap.set(".feature3-pretitle-char", { autoAlpha: 0, y: 26 });
+      gsap.set(".feature3-base-copy, .feature3-base-media", { autoAlpha: 0, y: 18 });
 
       const feature1Tl = gsap.timeline({
         scrollTrigger: {
@@ -554,6 +622,102 @@ export function FeaturesExperience() {
           ".feature1-phone-next",
           { xPercent: 0, autoAlpha: 1, duration: 0.5, ease: "none" },
           2.5,
+        )
+        .to({}, { duration: 0.42 });
+
+      const feature2Tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".feature-row--second",
+          start: "center center",
+          end: "+=300%",
+          scrub: 1,
+          pin: true,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+        },
+      });
+
+      feature2Tl
+        .to(
+          ".feature2-pretitle-char",
+          {
+            y: 0,
+            autoAlpha: 1,
+            duration: 0.28,
+            stagger: 0.045,
+            ease: "none",
+          },
+          0.02,
+        )
+        .to({}, { duration: 0.55 }, 0.62)
+        .to(
+          ".feature2-pretitle-char",
+          {
+            y: -20,
+            autoAlpha: 0,
+            duration: 0.24,
+            stagger: 0.028,
+            ease: "none",
+          },
+          1.12,
+        )
+        .to(
+          ".feature2-overlay",
+          { autoAlpha: 0, duration: 0.12, ease: "none" },
+          1.52,
+        )
+        .to(
+          ".feature2-base-copy, .feature2-base-media",
+          { y: 0, autoAlpha: 1, duration: 0.34, ease: "none" },
+          1.58,
+        )
+        .to({}, { duration: 0.42 });
+
+      const feature3Tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".feature-row--third",
+          start: "center center",
+          end: "+=300%",
+          scrub: 1,
+          pin: true,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+        },
+      });
+
+      feature3Tl
+        .to(
+          ".feature3-pretitle-char",
+          {
+            y: 0,
+            autoAlpha: 1,
+            duration: 0.28,
+            stagger: 0.045,
+            ease: "none",
+          },
+          0.02,
+        )
+        .to({}, { duration: 0.55 }, 0.62)
+        .to(
+          ".feature3-pretitle-char",
+          {
+            y: -20,
+            autoAlpha: 0,
+            duration: 0.24,
+            stagger: 0.028,
+            ease: "none",
+          },
+          1.12,
+        )
+        .to(
+          ".feature3-overlay",
+          { autoAlpha: 0, duration: 0.12, ease: "none" },
+          1.52,
+        )
+        .to(
+          ".feature3-base-copy, .feature3-base-media",
+          { y: 0, autoAlpha: 1, duration: 0.34, ease: "none" },
+          1.58,
         )
         .to({}, { duration: 0.42 });
 
