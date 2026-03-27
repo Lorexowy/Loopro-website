@@ -117,7 +117,7 @@ function FeatureSection({ feature }: FeatureSectionProps) {
       {feature.id === "feature-1" ? (
         <div
           aria-hidden
-          className="feature1-overlay pointer-events-none absolute bottom-0 left-0 right-0 top-[5rem] z-20 flex items-center justify-center sm:top-0"
+          className="feature1-overlay pointer-events-none absolute inset-0 z-20 grid place-items-center"
         >
           <p className="text-center text-[clamp(3.2rem,16vw,9rem)] font-black uppercase leading-[0.85] tracking-tight text-[var(--lp-fg)]">
             {renderAnimatedWordChars("OVERVIEW", "feature1-pretitle-char")}
@@ -137,13 +137,20 @@ function FeatureSection({ feature }: FeatureSectionProps) {
           <h2 className="text-balance text-3xl font-semibold tracking-tight text-[var(--lp-fg)] sm:text-4xl">
             Overview of your{" "}
             <span className="relative inline-grid align-baseline">
+              <span className="sr-only">subscriptions</span>
               <span aria-hidden className="invisible [grid-area:1/1]">
                 subscriptions
               </span>
-              <span className="feature1-word-subscriptions absolute inset-0 whitespace-nowrap">
+              <span
+                aria-hidden
+                className="feature1-word-subscriptions absolute inset-0 whitespace-nowrap"
+              >
                 {renderAnimatedWordChars("subscriptions", "feature1-char-sub")}
               </span>
-              <span className="feature1-word-loans absolute inset-0 whitespace-nowrap">
+              <span
+                aria-hidden
+                className="feature1-word-loans absolute inset-0 whitespace-nowrap"
+              >
                 {renderAnimatedWordChars("loans", "feature1-char-loan")}
               </span>
             </span>
@@ -368,6 +375,38 @@ export function FeaturesExperience() {
 
   useGSAP(
     () => {
+      const prefersReducedMotion =
+        typeof window !== "undefined" &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      if (prefersReducedMotion) {
+        gsap.set(".intro-icon", {
+          transformOrigin: "center top",
+          scale: 1,
+          y: 0,
+          autoAlpha: 1,
+        });
+        gsap.set(".intro-copy, .hero-breadcrumbs, .scroll-hint", {
+          autoAlpha: 1,
+          y: 0,
+        });
+        gsap.set(".feature-row", { autoAlpha: 1, y: 0 });
+        gsap.set(".feature1-overlay", { autoAlpha: 0 });
+        gsap.set(".feature1-base-copy, .feature1-base-media", {
+          autoAlpha: 1,
+          y: 0,
+        });
+        gsap.set(".feature1-char-sub", { autoAlpha: 1, y: 0 });
+        gsap.set(".feature1-char-loan", { autoAlpha: 0, y: 16 });
+        gsap.set(".feature1-phone-current", { autoAlpha: 1, xPercent: 0 });
+        gsap.set(".feature1-phone-next", { autoAlpha: 0, xPercent: 130 });
+        gsap.set(".pricing-heading, .pricing-sub, .pricing-billing, .pricing-card", {
+          autoAlpha: 1,
+          y: 0,
+        });
+        return;
+      }
+
       gsap.set(".intro-icon", {
         transformOrigin: "center top",
         scale: 2.85,
@@ -386,6 +425,7 @@ export function FeaturesExperience() {
           scrub: 1,
           pin: true,
           anticipatePin: 1,
+          invalidateOnRefresh: true,
         },
       });
 
@@ -432,6 +472,7 @@ export function FeaturesExperience() {
               trigger: section,
               start: "top 84%",
               toggleActions: "play none none reverse",
+              invalidateOnRefresh: true,
             },
           });
         });
@@ -444,6 +485,7 @@ export function FeaturesExperience() {
           scrub: 1,
           pin: true,
           anticipatePin: 1,
+          invalidateOnRefresh: true,
         },
       });
 
@@ -524,6 +566,7 @@ export function FeaturesExperience() {
           trigger: ".pricing-section",
           start: "top 78%",
           toggleActions: "play none none reverse",
+          invalidateOnRefresh: true,
         },
       });
 
