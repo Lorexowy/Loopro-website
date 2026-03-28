@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function FeaturesPage() {
   return (
-    <main className="relative isolate min-h-[100svh] min-h-dvh overflow-x-clip bg-black px-4 py-4 text-[var(--lp-fg)] sm:px-6 sm:py-6">
+    <main className="relative isolate flex min-h-0 flex-1 flex-col overflow-x-clip bg-black px-4 py-4 text-[var(--lp-fg)] sm:px-6 sm:py-6">
       <div
         aria-hidden
         className="pointer-events-none fixed inset-[-2px] -z-10 bg-[radial-gradient(75%_55%_at_90%_0%,rgba(0,190,255,0.45)_0%,rgba(0,190,255,0)_58%),radial-gradient(90%_70%_at_50%_45%,rgba(150,150,150,0.26)_0%,rgba(150,150,150,0)_62%),radial-gradient(80%_65%_at_0%_100%,rgba(0,170,255,0.22)_0%,rgba(0,170,255,0)_58%),radial-gradient(ellipse_85%_65%_at_50%_0%,rgba(59,130,246,0.34)_0%,rgba(0,0,0,0)_58%),#000]"

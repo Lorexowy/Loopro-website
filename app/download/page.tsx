@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function DownloadPage() {
   return (
-    <main className="flex h-[100dvh] max-h-[100dvh] flex-col overflow-hidden bg-black text-[var(--lp-fg)]">
+    <main className="flex min-h-0 flex-1 flex-col overflow-hidden bg-black text-[var(--lp-fg)]">
       <SiteHeader />
       <div className="flex min-h-0 flex-1 flex-col pt-[calc(5.5rem+env(safe-area-inset-top))] sm:pt-[calc(6.5rem+env(safe-area-inset-top))]">
         <div className="grid min-h-0 flex-1 grid-cols-1 md:grid-cols-2">
@@ -53,7 +53,7 @@ export default function DownloadPage() {
               />
             </span>
             <p className="max-w-md text-[13px] leading-relaxed text-white/55 sm:text-sm">
-              Planned release:{" "}
+              Planned release{" "}
               <span className="font-medium text-white/75">May 2026</span>
             </p>
           </div>

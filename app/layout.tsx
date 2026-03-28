@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Roboto_Flex } from "next/font/google";
+import { Footer } from "./components/Footer";
 import "./globals.css";
 
 const inter = Inter({
@@ -42,7 +43,10 @@ export default function RootLayout({
       className={`dark ${inter.variable} ${robotoFlex.variable} h-full`}
     >
       <body className="min-h-[100svh] min-h-dvh overflow-x-hidden antialiased">
-        {children}
+        <div className="flex min-h-[100svh] min-h-dvh flex-col">
+          <div className="flex min-h-0 flex-1 flex-col">{children}</div>
+          <Footer />
+        </div>
       </body>
     </html>
   );
