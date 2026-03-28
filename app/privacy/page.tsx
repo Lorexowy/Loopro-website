@@ -3,14 +3,14 @@ import Link from "next/link";
 import { SiteHeader } from "../components/SiteHeader";
 
 const navLeft = [
-  { href: "/#download", label: "Download" },
+  { href: "/download", label: "Download" },
   { href: "/features", label: "Features" },
 ] as const;
 
 const navRight = [
   { href: "/privacy", label: "Privacy" },
   { href: "/terms", label: "Terms" },
-  { href: "/#contact", label: "Contact" },
+  { href: "/contact", label: "Contact" },
 ] as const;
 
 const linkClass =

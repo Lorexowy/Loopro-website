@@ -6,14 +6,14 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 const linkLeft = [
-  { href: "/#download", label: "Download" },
+  { href: "/download", label: "Download" },
   { href: "/features", label: "Features" },
 ] as const;
 
 const linkRight = [
   { href: "/privacy", label: "Privacy" },
   { href: "/terms", label: "Terms" },
-  { href: "/#contact", label: "Contact" },
+  { href: "/contact", label: "Contact" },
 ] as const;
 
 const linkClass =
