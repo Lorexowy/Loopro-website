@@ -115,11 +115,13 @@ function FeatureSection({ feature }: FeatureSectionProps) {
             ? "feature-row--second relative"
             : feature.id === "feature-3"
               ? "feature-row--third relative"
-              : ""
+              : feature.id === "feature-4"
+                ? "feature-row--fourth relative"
+                : ""
       } min-h-[100svh] min-h-dvh grid items-start gap-10 pt-[5rem] pb-9 sm:items-center sm:pt-9 sm:pb-9 md:grid-cols-2 md:gap-16 md:py-14 ${
         feature.reverse
-          ? "md:[&>div:first-child]:order-2 md:[&>div:last-child]:order-1"
-          : ""
+          ? "md:[&>.feature-media]:col-start-1 md:[&>.feature-copy]:col-start-2 md:[&>.feature-media]:row-start-1 md:[&>.feature-copy]:row-start-1"
+          : "md:[&>.feature-copy]:col-start-1 md:[&>.feature-media]:col-start-2 md:[&>.feature-copy]:row-start-1 md:[&>.feature-media]:row-start-1"
       }`}
     >
       {feature.id === "feature-1" ? (
@@ -152,6 +154,22 @@ function FeatureSection({ feature }: FeatureSectionProps) {
           </p>
         </div>
       ) : null}
+      {feature.id === "feature-4" ? (
+        <div
+          aria-hidden
+          className="feature4-overlay pointer-events-none absolute inset-0 z-20 grid place-items-center px-2"
+        >
+          <p className="w-full min-w-0 max-w-full text-center text-[clamp(3.2rem,16vw,9rem)] font-black uppercase leading-[0.85] tracking-tight text-[var(--lp-fg)]">
+            <span className="inline-block whitespace-nowrap align-baseline">
+              {renderAnimatedWordChars("NOTIFI", "feature4-pretitle-char")}
+            </span>
+            <wbr />
+            <span className="inline-block whitespace-nowrap align-baseline">
+              {renderAnimatedWordChars("CATIONS", "feature4-pretitle-char")}
+            </span>
+          </p>
+        </div>
+      ) : null}
       <div
         className={`feature-copy ${
           feature.reverse
@@ -164,7 +182,9 @@ function FeatureSection({ feature }: FeatureSectionProps) {
               ? "feature2-base-copy text-left"
               : feature.id === "feature-3"
                 ? "feature3-base-copy text-left"
-                : "text-center"
+                : feature.id === "feature-4"
+                  ? "feature4-base-copy text-left"
+                  : "text-center"
         } md:text-left`}
       >
         {feature.id === "feature-1" ? (
@@ -189,7 +209,9 @@ function FeatureSection({ feature }: FeatureSectionProps) {
               </span>
             </span>
           </h2>
-        ) : feature.id === "feature-2" || feature.id === "feature-3" ? (
+        ) : feature.id === "feature-2" ||
+          feature.id === "feature-3" ||
+          feature.id === "feature-4" ? (
           <>
             <h2 className="text-balance text-3xl font-semibold tracking-tight text-[var(--lp-fg)] sm:text-4xl">
               {feature.title}
@@ -222,7 +244,9 @@ function FeatureSection({ feature }: FeatureSectionProps) {
               ? "feature2-base-media"
               : feature.id === "feature-3"
                 ? "feature3-base-media"
-                : ""
+                : feature.id === "feature-4"
+                  ? "feature4-base-media"
+                  : ""
         }`}
       >
         {feature.id === "feature-1" ? (
@@ -254,6 +278,16 @@ function FeatureSection({ feature }: FeatureSectionProps) {
           </div>
         ) : feature.id === "feature-3" ? (
           <div className="feature3-phone-stage relative w-[min(62vw,240px)] sm:w-[360px] aspect-[682/1200]">
+            <Image
+              src={feature.imageSrc}
+              alt={`${feature.title} in Loopro app`}
+              fill
+              sizes="(min-width: 640px) 360px, min(62vw,240px)"
+              className="object-contain"
+            />
+          </div>
+        ) : feature.id === "feature-4" ? (
+          <div className="feature4-phone-stage relative w-[min(62vw,240px)] sm:w-[360px] aspect-[682/1200]">
             <Image
               src={feature.imageSrc}
               alt={`${feature.title} in Loopro app`}
@@ -479,6 +513,11 @@ export function FeaturesExperience() {
           autoAlpha: 1,
           y: 0,
         });
+        gsap.set(".feature4-overlay", { autoAlpha: 0 });
+        gsap.set(".feature4-base-copy, .feature4-base-media", {
+          autoAlpha: 1,
+          y: 0,
+        });
         gsap.set(".pricing-heading, .pricing-sub, .pricing-billing, .pricing-card", {
           autoAlpha: 1,
           y: 0,
@@ -531,10 +570,13 @@ export function FeaturesExperience() {
         ease: "sine.inOut",
       });
 
-      gsap.set(".feature-row--first, .feature-row--second, .feature-row--third", {
-        autoAlpha: 1,
-        y: 0,
-      });
+      gsap.set(
+        ".feature-row--first, .feature-row--second, .feature-row--third, .feature-row--fourth",
+        {
+          autoAlpha: 1,
+          y: 0,
+        },
+      );
       gsap.set(".feature1-pretitle-char", { autoAlpha: 0, y: 26 });
       gsap.set(".feature1-base-copy, .feature1-base-media", { autoAlpha: 0, y: 18 });
       gsap.set(".feature1-char-sub", { autoAlpha: 1, y: 0 });
@@ -544,6 +586,8 @@ export function FeaturesExperience() {
       gsap.set(".feature2-base-copy, .feature2-base-media", { autoAlpha: 0, y: 18 });
       gsap.set(".feature3-pretitle-char", { autoAlpha: 0, y: 26 });
       gsap.set(".feature3-base-copy, .feature3-base-media", { autoAlpha: 0, y: 18 });
+      gsap.set(".feature4-pretitle-char", { autoAlpha: 0, y: 26 });
+      gsap.set(".feature4-base-copy, .feature4-base-media", { autoAlpha: 0, y: 18 });
 
       const feature1Tl = gsap.timeline({
         scrollTrigger: {
@@ -716,6 +760,54 @@ export function FeaturesExperience() {
         )
         .to(
           ".feature3-base-copy, .feature3-base-media",
+          { y: 0, autoAlpha: 1, duration: 0.34, ease: "none" },
+          1.58,
+        )
+        .to({}, { duration: 0.42 });
+
+      const feature4Tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".feature-row--fourth",
+          start: "center center",
+          end: "+=300%",
+          scrub: 1,
+          pin: true,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+        },
+      });
+
+      feature4Tl
+        .to(
+          ".feature4-pretitle-char",
+          {
+            y: 0,
+            autoAlpha: 1,
+            duration: 0.28,
+            stagger: 0.045,
+            ease: "none",
+          },
+          0.02,
+        )
+        .to({}, { duration: 0.55 }, 0.62)
+        .to(
+          ".feature4-pretitle-char",
+          {
+            y: -20,
+            autoAlpha: 0,
+            duration: 0.24,
+            stagger: 0.028,
+            ease: "none",
+          },
+          1.12,
+        )
+        .to(
+          ".feature4-overlay",
+          { autoAlpha: 0, duration: 0.12, ease: "none" },
+          1.52,
+        )
+        .to(
+          ".feature4-base-copy, .feature4-base-media",
           { y: 0, autoAlpha: 1, duration: 0.34, ease: "none" },
           1.58,
         )

@@ -31,5 +31,19 @@ export const feature3: FeatureSectionModel = {
   imageSrc: "/iphone_main_phone_view.png",
 };
 
-export const featureSections: FeatureSectionModel[] = [feature1, feature2, feature3];
+export const feature4: FeatureSectionModel = {
+  id: "feature-4",
+  title: "Payment reminders that reach you in time",
+  description:
+    "Get notified before renewals and due dates so you can cancel, adjust, or budget with confidence—no more forgotten charges.",
+  reverse: true,
+  imageSrc: "/iphone_main_phone_view.png",
+};
+
+export const featureSections: FeatureSectionModel[] = [
+  feature1,
+  feature2,
+  feature3,
+  feature4,
+];
 
