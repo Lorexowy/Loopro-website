@@ -15,10 +15,10 @@ export default function DownloadPage() {
         <div className="grid min-h-0 flex-1 grid-cols-1 md:grid-cols-2">
           <div className="relative hidden min-h-0 items-center justify-center px-6 py-4 md:flex">
             <Image
-              src="/iphone_main_phone_view.png"
+              src="/iphone_logo_phone_view_.png"
               alt="Loopro app preview on iPhone"
-              width={682}
-              height={1200}
+              width={1350}
+              height={2760}
               priority
               className="h-auto max-h-[min(78dvh,720px)] w-auto max-w-[min(42vw,320px)] object-contain"
             />
