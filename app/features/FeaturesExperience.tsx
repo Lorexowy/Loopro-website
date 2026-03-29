@@ -259,7 +259,7 @@ function FeatureSection({ feature }: FeatureSectionProps) {
               className="feature1-phone-current object-contain"
             />
             <Image
-              src="/iphone_main_phone_view.png"
+              src="/iphone_loan_phone_view.png"
               alt="Loopro app loans preview"
               fill
               sizes="(min-width: 640px) 360px, min(62vw,240px)"
