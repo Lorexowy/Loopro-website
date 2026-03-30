@@ -20,7 +20,7 @@ export const feature2: FeatureSectionModel = {
   description:
     "Understand recurring costs with clear spending insights. Spot expensive services, compare categories, and make smarter monthly budget decisions.",
   reverse: true,
-  imageSrc: "/iphone_main_phone_view.png",
+  imageSrc: "/iphone_insights_phone_view.png",
 };
 
 export const feature3: FeatureSectionModel = {
@@ -28,7 +28,7 @@ export const feature3: FeatureSectionModel = {
   title: "Calendar view for upcoming payments",
   description:
     "Know exactly when each payment is due. Plan ahead with a clear calendar timeline and avoid surprise subscription charges.",
-  imageSrc: "/iphone_main_phone_view.png",
+  imageSrc: "/iphone_calendar_phone_view_.png",
 };
 
 export const feature4: FeatureSectionModel = {

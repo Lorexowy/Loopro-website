@@ -159,15 +159,27 @@ function FeatureSection({ feature }: FeatureSectionProps) {
           aria-hidden
           className="feature4-overlay pointer-events-none absolute inset-0 z-20 grid place-items-center px-2"
         >
-          <p className="w-full min-w-0 max-w-full text-center text-[clamp(3.2rem,16vw,9rem)] font-black uppercase leading-[0.85] tracking-tight text-[var(--lp-fg)]">
-            <span className="inline-block whitespace-nowrap align-baseline">
-              {renderAnimatedWordChars("NOTIFI", "feature4-pretitle-char")}
-            </span>
-            <wbr />
-            <span className="inline-block whitespace-nowrap align-baseline">
-              {renderAnimatedWordChars("CATIONS", "feature4-pretitle-char")}
-            </span>
-          </p>
+          <div className="flex flex-col items-center justify-center">
+            <div className="feature4-notification mb-7 sm:mb-9 w-[min(76vw,520px)]">
+              <Image
+                src="/powiadomienie.png"
+                alt=""
+                width={1536}
+                height={366}
+                sizes="(min-width: 1024px) 520px, (min-width: 640px) 68vw, 76vw"
+                className="h-auto w-full rounded-2xl"
+              />
+            </div>
+            <p className="w-full min-w-0 max-w-full text-center text-[clamp(3.2rem,16vw,9rem)] font-black uppercase leading-[0.85] tracking-tight text-[var(--lp-fg)]">
+              <span className="inline-block whitespace-nowrap align-baseline">
+                {renderAnimatedWordChars("NOTIFI", "feature4-pretitle-char")}
+              </span>
+              <wbr />
+              <span className="inline-block whitespace-nowrap align-baseline">
+                {renderAnimatedWordChars("CATIONS", "feature4-pretitle-char")}
+              </span>
+            </p>
+          </div>
         </div>
       ) : null}
       <div
@@ -514,6 +526,7 @@ export function FeaturesExperience() {
           y: 0,
         });
         gsap.set(".feature4-overlay", { autoAlpha: 0 });
+        gsap.set(".feature4-notification", { autoAlpha: 0, y: 28 });
         gsap.set(".feature4-base-copy, .feature4-base-media", {
           autoAlpha: 1,
           y: 0,
@@ -587,6 +600,7 @@ export function FeaturesExperience() {
       gsap.set(".feature3-pretitle-char", { autoAlpha: 0, y: 26 });
       gsap.set(".feature3-base-copy, .feature3-base-media", { autoAlpha: 0, y: 18 });
       gsap.set(".feature4-pretitle-char", { autoAlpha: 0, y: 26 });
+      gsap.set(".feature4-notification", { autoAlpha: 0, y: 34 });
       gsap.set(".feature4-base-copy, .feature4-base-media", { autoAlpha: 0, y: 18 });
 
       const feature1Tl = gsap.timeline({
@@ -789,7 +803,17 @@ export function FeaturesExperience() {
           },
           0.02,
         )
+        .to(
+          ".feature4-notification",
+          { y: 0, autoAlpha: 1, duration: 0.32, ease: "none" },
+          0.44,
+        )
         .to({}, { duration: 0.55 }, 0.62)
+        .to(
+          ".feature4-notification",
+          { y: -14, autoAlpha: 0, duration: 0.22, ease: "none" },
+          1.1,
+        )
         .to(
           ".feature4-pretitle-char",
           {
