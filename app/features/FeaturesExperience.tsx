@@ -159,18 +159,8 @@ function FeatureSection({ feature }: FeatureSectionProps) {
           aria-hidden
           className="feature4-overlay pointer-events-none absolute inset-0 z-20 grid place-items-center px-2"
         >
-          <div className="flex flex-col items-center justify-center">
-            <div className="feature4-notification mb-7 sm:mb-9 w-[min(76vw,520px)]">
-              <Image
-                src="/powiadomienie.png"
-                alt=""
-                width={1536}
-                height={366}
-                sizes="(min-width: 1024px) 520px, (min-width: 640px) 68vw, 76vw"
-                className="h-auto w-full rounded-2xl"
-              />
-            </div>
-            <p className="w-full min-w-0 max-w-full text-center text-[clamp(3.2rem,16vw,9rem)] font-black uppercase leading-[0.85] tracking-tight text-[var(--lp-fg)]">
+          <div className="feature4-overlay-stage relative flex min-h-[min(40vh,420px)] w-full max-w-[min(100%,56rem)] items-center justify-center">
+            <p className="feature4-pretitle-wrap relative z-10 w-full min-w-0 max-w-full text-center text-[clamp(3.2rem,16vw,9rem)] font-black uppercase leading-[0.85] tracking-tight text-[var(--lp-fg)]">
               <span className="inline-block whitespace-nowrap align-baseline">
                 {renderAnimatedWordChars("NOTIFI", "feature4-pretitle-char")}
               </span>
@@ -179,6 +169,16 @@ function FeatureSection({ feature }: FeatureSectionProps) {
                 {renderAnimatedWordChars("CATIONS", "feature4-pretitle-char")}
               </span>
             </p>
+            <div className="feature4-notification pointer-events-none absolute inset-0 z-20 flex items-center justify-center px-1">
+              <Image
+                src="/powiadomienie.png"
+                alt=""
+                width={1536}
+                height={366}
+                sizes="(min-width: 1024px) 520px, (min-width: 640px) 68vw, 76vw"
+                className="h-auto w-[min(76vw,520px)] max-w-full rounded-2xl"
+              />
+            </div>
           </div>
         </div>
       ) : null}
@@ -783,7 +783,7 @@ export function FeaturesExperience() {
         scrollTrigger: {
           trigger: ".feature-row--fourth",
           start: "center center",
-          end: "+=300%",
+          end: "+=420%",
           scrub: 1,
           pin: true,
           anticipatePin: 1,
@@ -803,17 +803,7 @@ export function FeaturesExperience() {
           },
           0.02,
         )
-        .to(
-          ".feature4-notification",
-          { y: 0, autoAlpha: 1, duration: 0.32, ease: "none" },
-          0.44,
-        )
         .to({}, { duration: 0.55 }, 0.62)
-        .to(
-          ".feature4-notification",
-          { y: -14, autoAlpha: 0, duration: 0.22, ease: "none" },
-          1.1,
-        )
         .to(
           ".feature4-pretitle-char",
           {
@@ -826,14 +816,25 @@ export function FeaturesExperience() {
           1.12,
         )
         .to(
+          ".feature4-notification",
+          { y: 0, autoAlpha: 1, duration: 0.34, ease: "none" },
+          1.42,
+        )
+        .to({}, { duration: 0.5 }, 1.76)
+        .to(
+          ".feature4-notification",
+          { y: -18, autoAlpha: 0, duration: 0.26, ease: "none" },
+          2.26,
+        )
+        .to(
           ".feature4-overlay",
-          { autoAlpha: 0, duration: 0.12, ease: "none" },
-          1.52,
+          { autoAlpha: 0, duration: 0.14, ease: "none" },
+          2.56,
         )
         .to(
           ".feature4-base-copy, .feature4-base-media",
-          { y: 0, autoAlpha: 1, duration: 0.34, ease: "none" },
-          1.58,
+          { y: 0, autoAlpha: 1, duration: 0.36, ease: "none" },
+          2.64,
         )
         .to({}, { duration: 0.42 });
 
