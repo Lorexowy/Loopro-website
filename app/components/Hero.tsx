@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export function Hero() {
   return (
@@ -20,8 +21,8 @@ export function Hero() {
         your monthly spending.
       </p>
       <div className="lp-animate-in lp-delay-3 mt-8 flex w-full flex-col items-center justify-center">
-        <a
-          href="#download"
+        <Link
+          href="/coming-soon"
           aria-label="Download on the App Store"
           className="inline-flex items-center justify-center"
         >
@@ -34,7 +35,7 @@ export function Hero() {
             unoptimized
             className="h-[40px] w-auto sm:h-[44px] md:h-[46px]"
           />
-        </a>
+        </Link>
       </div>
       <div className="lp-animate-in lp-delay-3 mt-8 flex w-full justify-center">
         <Image
@@ -55,12 +56,12 @@ export function Hero() {
         />
       </div>
       <div className="lp-animate-in lp-delay-3 mt-3 flex w-full justify-center">
-        <a
-          href="#features"
+        <Link
+          href="/features"
           className="text-[13px] font-normal text-[var(--lp-fg-muted)] transition-colors hover:text-[var(--lp-fg)]"
         >
           learn more
-        </a>
+        </Link>
       </div>
     </section>
   );

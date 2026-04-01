@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { SiteHeader } from "../components/SiteHeader";
 
 export const metadata: Metadata = {
@@ -38,9 +39,10 @@ export default function DownloadPage() {
               You can download my app only from the official{" "}
               <span className="text-white/92">Apple App Store</span>.
             </p>
-            <span
+            <Link
+              href="/coming-soon"
               className="inline-flex opacity-95"
-              aria-label="App Store badge — link will be available after release"
+              aria-label="Download on the App Store"
             >
               <Image
                 src="/Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917.svg"
@@ -51,7 +53,7 @@ export default function DownloadPage() {
                 unoptimized
                 className="h-[40px] w-auto sm:h-[44px] md:h-[46px]"
               />
-            </span>
+            </Link>
             <p className="max-w-md text-[13px] leading-relaxed text-white/55 sm:text-sm">
               Planned release{" "}
               <span className="font-medium text-white/75">May 2026</span>
