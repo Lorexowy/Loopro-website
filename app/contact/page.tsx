@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteHeader } from "../components/SiteHeader";
 
-const EMAIL = "mateusz.michel7@gmail.com";
+const EMAIL = "micheldev.work@gmail.com";
 
 const faqItems = [
   {
