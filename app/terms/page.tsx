@@ -106,7 +106,7 @@ export default function TermsPage() {
             </h2>
             <p className="mt-2">The App is developed and operated by:</p>
             <p className="mt-2 whitespace-pre-line text-white/90">
-              Mateusz Michel{"\n"}Email: mateusz.michel7@gmail.com
+              Mateusz Michel{"\n"}Email: micheldev.work@gmail.com
             </p>
           </section>
 
@@ -348,7 +348,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-lg font-semibold text-white">19. Contact</h2>
             <p className="mt-2">If you have any questions about these Terms:</p>
-            <p className="mt-2 text-white">mateusz.michel7@gmail.com</p>
+            <p className="mt-2 text-white">micheldev.work@gmail.com</p>
           </section>
         </div>
       </div>

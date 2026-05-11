@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import { APP_STORE_URL } from "../appStore";
 import { SiteHeader } from "../components/SiteHeader";
 
 export const metadata: Metadata = {
@@ -36,13 +36,15 @@ export default function DownloadPage() {
               className="h-[88px] w-[88px] shrink-0 sm:h-[104px] sm:w-[104px]"
             />
             <p className="max-w-md text-pretty text-[15px] leading-relaxed text-white/78 sm:text-[17px]">
-              You can download my app only from the official{" "}
+              Loopro is now available on the official{" "}
               <span className="text-white/92">Apple App Store</span>.
             </p>
-            <Link
-              href="/coming-soon"
+            <a
+              href={APP_STORE_URL}
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex opacity-95"
-              aria-label="Download on the App Store"
+              aria-label="Open Loopro on the App Store"
             >
               <Image
                 src="/Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917.svg"
@@ -53,10 +55,9 @@ export default function DownloadPage() {
                 unoptimized
                 className="h-[40px] w-auto sm:h-[44px] md:h-[46px]"
               />
-            </Link>
+            </a>
             <p className="max-w-md text-[13px] leading-relaxed text-white/55 sm:text-sm">
-              Planned release{" "}
-              <span className="font-medium text-white/75">May 2026</span>
+              Available now for <span className="font-medium text-white/75">iPhone</span>
             </p>
           </div>
         </div>

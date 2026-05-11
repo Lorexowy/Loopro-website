@@ -114,7 +114,7 @@ export default function PrivacyPage() {
             </h2>
             <p className="mt-2">Loopro is developed and operated by:</p>
             <p className="mt-2 whitespace-pre-line text-white/90">
-              Mateusz Michel{"\n"}Email: mateusz.michel7@gmail.com
+              Mateusz Michel{"\n"}Email: micheldev.work@gmail.com
             </p>
             <p className="mt-2">
               The Developer acts as the data controller only to the extent
@@ -373,7 +373,7 @@ export default function PrivacyPage() {
             <p className="mt-2">
               If you have any questions about this Privacy Policy:
             </p>
-            <p className="mt-2 text-white">mateusz.michel7@gmail.com</p>
+            <p className="mt-2 text-white">micheldev.work@gmail.com</p>
           </section>
         </div>
       </div>

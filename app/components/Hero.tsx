@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { APP_STORE_URL } from "../appStore";
 
 export function Hero() {
   return (
@@ -21,8 +22,10 @@ export function Hero() {
         your monthly spending.
       </p>
       <div className="lp-animate-in lp-delay-3 mt-8 flex w-full flex-col items-center justify-center">
-        <Link
-          href="/coming-soon"
+        <a
+          href={APP_STORE_URL}
+          target="_blank"
+          rel="noreferrer"
           aria-label="Download on the App Store"
           className="inline-flex items-center justify-center"
         >
@@ -35,7 +38,7 @@ export function Hero() {
             unoptimized
             className="h-[40px] w-auto sm:h-[44px] md:h-[46px]"
           />
-        </Link>
+        </a>
       </div>
       <div className="lp-animate-in lp-delay-3 mt-8 flex w-full justify-center">
         <Image
